@@ -1,0 +1,171 @@
+Private Sub Command1_Click()
+If Text1.Text = "UDOM" And Text2.Text = "UDOM" Then
+Form1.Show
+Unload Me
+Else
+MsgBox "WRONG USERNAME/PASSWORD"
+End If
+End Sub
+Private Sub MNUFE_Click(Index As Integer)
+Form9.Show
+End Sub
+
+Private Sub MNUFEEDREPORT_Click(Index As Integer)
+Form6.Show
+End Sub
+
+Private Sub MNUFREC_Click(Index As Integer)
+Form3.Show
+End Sub
+
+Private Sub MNUMED_Click(Index As Integer)
+Form4.Show
+End Sub
+
+Private Sub MNUMEDICATE_Click(Index As Integer)
+Form8.Show
+End Sub
+
+Private Sub MNUMEDREPORT_Click(Index As Integer)
+Form7.Show
+End Sub
+
+Private Sub MNUNB_Click(Index As Integer)
+Form2.Show
+End Sub
+
+Private Sub MNUNBREPORT_Click(Index As Integer)
+Form5.Show
+End Sub
+
+Private Sub MNUQ_Click(Index As Integer)
+End
+End Sub
+'NEW BREED REGISTRATION
+Private Sub Command1_Click()
+Adodc1.Recordset.AddNew
+End Sub
+
+Private Sub Command2_Click()
+Adodc1.Recordset.Update
+MsgBox "SAVED"
+End Sub
+
+Private Sub Command3_Click()
+Unload Me
+End Sub
+
+Private Sub Text6_Click()
+Text6.Text = CDbl(Text4.Text) * CDbl(Text5.Text)
+End Sub
+'FEEDING RECORD
+Private Sub Combo1_Click()
+Adodc1.Refresh
+Adodc1.Recordset.Find "BATCH = '" & Combo1.Text & "'"
+End Sub
+
+Private Sub Command1_Click()
+Adodc4.Recordset.AddNew
+End Sub
+
+Private Sub Command2_Click()
+Text2.Text = Combo1.Text
+Text4.Text = Text1.Text
+Text8.Text = Text5.Text
+Text9.Text = Combo2.Text
+
+Adodc4.Recordset.Update
+MsgBox "SAVED"
+End Sub
+
+Private Sub Command3_Click()
+Unload Me
+End Sub
+
+Private Sub Form_Load()
+Adodc2.Refresh
+Do
+    Combo1.AddItem Adodc2.Recordset.Fields("BATCH")
+    Adodc2.Recordset.MoveNext
+    Loop Until Adodc2.Recordset.EOF = True
+
+Adodc3.Refresh
+Do
+    Combo2.AddItem Adodc3.Recordset.Fields("feed_name")
+    Adodc3.Recordset.MoveNext
+    Loop Until Adodc3.Recordset.EOF = True
+
+End Sub
+
+Private Sub Text7_Click()
+Text7.Text = CDbl(Text6.Text) * CDbl(Text5.Text)
+End Sub
+'MEDICATION RECORD
+Private Sub Combo2_Click()
+Adodc5.Refresh
+Adodc5.Recordset.Find "medication = '" & Combo2.Text & "'"
+End Sub
+
+Private Sub Command1_Click()
+Adodc4.Recordset.AddNew
+End Sub
+
+Private Sub Command2_Click()
+Text3.Text = Combo1.Text
+Text4.Text = Text2.Text
+Text9.Text = Combo1.Text
+
+Adodc4.Recordset.Update
+MsgBox "SAVED"
+End Sub
+
+Private Sub Command3_Click()
+Unload Me
+End Sub
+
+Private Sub Form_Load()
+
+Adodc2.Refresh
+Do
+    Combo1.AddItem Adodc2.Recordset.Fields("BATCH")
+    Adodc2.Recordset.MoveNext
+    Loop Until Adodc2.Recordset.EOF = True
+
+
+    Adodc3.Refresh
+Do
+    Combo2.AddItem Adodc3.Recordset.Fields("medication")
+    Adodc3.Recordset.MoveNext
+    Loop Until Adodc3.Recordset.EOF = True
+End Sub
+'MEDICATION DRUG/PURPOSE REGISTRATION
+Private Sub Command1_Click()
+On Error GoTo ab
+Adodc1.Recordset.Update
+MsgBox "Saved"
+
+Exit Sub
+ab:
+MsgBox "Not saved"
+End Sub
+
+Private Sub Command2_Click()
+Unload Me
+End Sub
+
+Private Sub Form_Load()
+Adodc1.Recordset.AddNew
+End Sub
+'FEED REGISTRATION
+Private Sub Command1_Click()
+Adodc1.Recordset.Update
+MsgBox "SAVED"
+End Sub
+
+Private Sub Command2_Click()
+Unload Me
+End Sub
+
+Private Sub Form_Load()
+Adodc1.Recordset.AddNew
+End Sub
